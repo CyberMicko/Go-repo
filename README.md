@@ -1,8 +1,12 @@
 # Go-repo
 Go and other projects
 
-Hi there! 
+Nekakav početak:
 
-I'm right here trying to learn a lot of something about back-end programming!
+1.Preuzeo Visual Code(VScode) skinuo sve potrebno kako bi mogao debug-irati go projekte
 
-So fingers crossed.
+2.Napravio git repo, povezao ga sa VScode-om, napravio inital commit
+
+3.Prošao sve basic funkcije u Go-u
+
+4.To je za sad sve čini mi se.
