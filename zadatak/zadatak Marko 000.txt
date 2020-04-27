@@ -1,0 +1,8 @@
+Za pocetak potrebno je:
+- upoznati se s osnovama gita
+- sloziti si git usera
+- sloziti git repository
+- instalirati si Visual Studio Code 
+
+A nadalje, proci osnove GOa:
+- https://tour.golang.org/welcome/1
