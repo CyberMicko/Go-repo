@@ -7,3 +7,6 @@ Napravi aplikaciju koja će pri startu učitati 2 JSON file-a sa sljedećih URL-
 https://www.dropbox.com/s/2kqweiiqf6nbhfz/lige.json?dl=0
 https://www.dropbox.com/s/wr9vnmt5e1jhwkq/ponude.json?dl=0
 JSON podaci (lige.json i ponude.json) su međusobno povezani preko ID-eva ponude. Podaci u ovom trenutku još uvijek mogu biti spremljeni u memoriji aplikacije.
+
+
+Jel mogu dobiti nekakav guide za izgled output-a da napravim neku app od početka do kraja, a da na kraju ne moram mjenjati output.   
