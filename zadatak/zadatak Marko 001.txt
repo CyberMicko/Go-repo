@@ -10,3 +10,6 @@ JSON podaci (lige.json i ponude.json) su međusobno povezani preko ID-eva ponude
 
 
 Jel mogu dobiti nekakav guide za izgled output-a da napravim neku app od početka do kraja, a da na kraju ne moram mjenjati output.   
+
+
+Tebe to ne treba sekirati. Samo napravi da se ispise u log, ako nista drugo...
