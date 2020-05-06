@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
@@ -22,7 +23,7 @@ type Lige struct {
 }
 type GlPonude []struct {
 	Broj          string     `json:"broj"`
-	ID            int        `json:"id"`
+	id            int        `json:"id"`
 	Naziv         string     `json:"naziv"`
 	Vrijeme       time.Time  `json:"vrijeme"`
 	Tecajevi      []Tecajevi `json:"tecajevi"`
@@ -34,61 +35,35 @@ type Tecajevi struct {
 	Naziv string  `json:"naziv"`
 }
 
-func main() {
-	dataLige, err := http.Get("https://www.dropbox.com/s/2kqweiiqf6nbhfz/lige.json?dl=0")
-	dataPonude, err2 := http.Get("https://www.dropbox.com/s/wr9vnmt5e1jhwkq/ponude.json?dl=0")
+var myClient = &http.Client{Timeout: 10 * time.Second}
+
+func getJSON(url string, target interface{}) error {
+	r, err := myClient.Get(url)
 	if err != nil {
-		fmt.Println("File reading error", err)
-		return
+		return err
 	}
-	if err2 != nil {
-		fmt.Println("File reading error", err2)
-		return
-	}
-	fmt.Println("Contents of dataLige:", string(dataLige))
-	fmt.Println("Contents of dataPonude:", string(dataPonude))
+	defer r.Body.Close()
+
+	return json.NewDecoder(r.Body).Decode(target)
 }
+
+func main() {
+	dataLige := new(GlLige)
+	dataPonude := new(GlPonude) // structs in variabs
+
+	getJSON("https://www.dropbox.com/s/2kqweiiqf6nbhfz/lige.json?dl=0", dataLige)
+	getJSON("https://www.dropbox.com/s/wr9vnmt5e1jhwkq/ponude.json?dl=0", dataPonude) // getting data and populating structs
+
+	fmt.Println(dataLige.Lige)
+	fmt.Println(dataPonude.[1]id) // output fields/values of structs 
+}	
+	/*var jsonData []byte
+	jsonData, err := json.Marshal(basket)
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println(string(jsonData))*/
+
 
 // lige.json = https://www.dropbox.com/s/2kqweiiqf6nbhfz/lige.json?dl=0
 // ponude.json = https://www.dropbox.com/s/wr9vnmt5e1jhwkq/ponude.json?dl=0
-/*
-func readJSONFromUrl(url string) ([]Country, error) {
-	resp, err := http.Get(url)
-	if err != nil {
-		return nil, err
-	}
-
-	defer resp.Body.Close()
-	var countryList []Country
-	buf := new(bytes.Buffer)
-	buf.ReadFrom(resp.Body)
-	respByte := buf.Bytes()
-	if err := json.Unmarshal(respByte, &countryList); err != nil {
-		return nil, err
-	}
-
-	return countryList, nil
-}
-
-func main() {
-	url := "https://www.dropbox.com/s/2kqweiiqf6nbhfz/lige.json?dl=0"
-	//https://www.dropbox.com/s/wr9vnmt5e1jhwkq/ponude.json?dl=0
-	countryList, err := readJSONFromUrl(url)
-	if err != nil {
-		panic(err)
-	}
-
-	for idx, row := range countryList {
-		// skip header
-		if idx == 0 {
-			continue
-		}
-
-		if idx == 6 {
-			break
-		}
-
-		fmt.Println(row.CountryName.Common)
-	}
-}
-*/
