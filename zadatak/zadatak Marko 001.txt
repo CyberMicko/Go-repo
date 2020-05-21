@@ -1,15 +1,10 @@
 Uvod
-Zadatak smo podijelili u više koraka, svaki nešto zahtjevniji od prethodnog. Za implementaciju preporučujemo korištenje Go programskog jezika, a očekujemo da ćeš koristiti relacijsku bazu podataka. Nismo ograničeni tipom, prepuštamo ti na izbor, a naša preporuka je SQL Server, uz mali hint za spajanje na bazu u privitku, s obzirom na specifičnosti na koje bi mogao izgubiti previše vremena, a nisu bitne za generalnu prosudbu.
-Rješenje koje nam pošalješ pripremi kao da ga puštaš u produkciju. Detalji su važni.
 
 Osnova aplikacije
+
 Napravi aplikaciju koja će pri startu učitati 2 JSON file-a sa sljedećih URL-ova:
-https://www.dropbox.com/s/2kqweiiqf6nbhfz/lige.json?dl=0
-https://www.dropbox.com/s/wr9vnmt5e1jhwkq/ponude.json?dl=0
+https://www.aeternus.hr/go/lige.json
+https://www.aeternus.hr/go/ponude.json
 JSON podaci (lige.json i ponude.json) su međusobno povezani preko ID-eva ponude. Podaci u ovom trenutku još uvijek mogu biti spremljeni u memoriji aplikacije.
 
-
-Jel mogu dobiti nekakav guide za izgled output-a da napravim neku app od početka do kraja, a da na kraju ne moram mjenjati output.   
-
-
-Tebe to ne treba sekirati. Samo napravi da se ispise u log, ako nista drugo...
+Na kraju, koristeci String metode (stringere) za pojedine strukture, ispisati dobiveno u log (dovoljno koristiti fmt.Printf, fmt.Println)
